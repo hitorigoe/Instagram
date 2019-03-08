@@ -13,6 +13,11 @@
 		EFFFFAED2232EC1B00A5E213 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFAEB2232EC1B00A5E213 /* Instagram.xcdatamodeld */; };
 		EFFFFAEF2232EC1D00A5E213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFFFAEE2232EC1D00A5E213 /* Assets.xcassets */; };
 		EFFFFAF22232EC1D00A5E213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFFFAF02232EC1D00A5E213 /* LaunchScreen.storyboard */; };
+		EFFFFAFA2232EF5300A5E213 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFAF92232EF5300A5E213 /* LoginViewController.swift */; };
+		EFFFFAFC2232EF7600A5E213 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFAFB2232EF7600A5E213 /* HomeViewController.swift */; };
+		EFFFFAFE2232EF9300A5E213 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFAFD2232EF9300A5E213 /* ImageSelectViewController.swift */; };
+		EFFFFB002232EFAE00A5E213 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFAFF2232EFAE00A5E213 /* PostViewController.swift */; };
+		EFFFFB022232EFC300A5E213 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFFB012232EFC300A5E213 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		EFFFFAEE2232EC1D00A5E213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFFFFAF12232EC1D00A5E213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFFFFAF32232EC1D00A5E213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFFFFAF92232EF5300A5E213 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EFFFFAFB2232EF7600A5E213 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EFFFFAFD2232EF9300A5E213 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
+		EFFFFAFF2232EFAE00A5E213 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		EFFFFB012232EFC300A5E213 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,11 @@
 				EFFFFAF02232EC1D00A5E213 /* LaunchScreen.storyboard */,
 				EFFFFAF32232EC1D00A5E213 /* Info.plist */,
 				EFFFFAEB2232EC1B00A5E213 /* Instagram.xcdatamodeld */,
+				EFFFFAF92232EF5300A5E213 /* LoginViewController.swift */,
+				EFFFFAFB2232EF7600A5E213 /* HomeViewController.swift */,
+				EFFFFAFD2232EF9300A5E213 /* ImageSelectViewController.swift */,
+				EFFFFAFF2232EFAE00A5E213 /* PostViewController.swift */,
+				EFFFFB012232EFC300A5E213 /* SettingViewController.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -138,6 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFFFFAFE2232EF9300A5E213 /* ImageSelectViewController.swift in Sources */,
+				EFFFFAFC2232EF7600A5E213 /* HomeViewController.swift in Sources */,
+				EFFFFB002232EFAE00A5E213 /* PostViewController.swift in Sources */,
+				EFFFFB022232EFC300A5E213 /* SettingViewController.swift in Sources */,
+				EFFFFAFA2232EF5300A5E213 /* LoginViewController.swift in Sources */,
 				EFFFFAE72232EC1B00A5E213 /* ViewController.swift in Sources */,
 				EFFFFAED2232EC1B00A5E213 /* Instagram.xcdatamodeld in Sources */,
 				EFFFFAE52232EC1B00A5E213 /* AppDelegate.swift in Sources */,
@@ -296,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.seplus.torigoe2.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,7 +334,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.seplus.torigoe2.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
