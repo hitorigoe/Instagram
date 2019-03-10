@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+import CLImageEditor
 
-class ImageSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ImageSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +50,24 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
             let image = info[.originalImage] as! UIImage
             
             // あとでCLImageEditorライブラリで加工する
-            print("DEBUG_PRINT: image = \(image)")
             
+            print("DEBUG_PRINT: image = \(image)")
+            let editor = CLImageEditor(image: image)!
+            editor.delegate = self
+            picker.pushViewController(editor, animated: true)
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // 閉じる
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
+        // 投稿の画面を開く
+        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! PostViewController
+        postViewController.image = image!
+        editor.present(postViewController, animated: true, completion: nil)
     }
     
     
