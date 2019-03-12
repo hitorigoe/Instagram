@@ -45,6 +45,10 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     // 写真を撮影/選択したときに呼ばれるメソッド
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("mmm")
+        print(info[.originalImage])
+        print("nnn")
+        
         if info[.originalImage] != nil {
             // 撮影/選択された画像を取得する
             let image = info[.originalImage] as! UIImage
@@ -67,6 +71,7 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
         // 投稿の画面を開く
         let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! PostViewController
         postViewController.image = image!
+        print("fdfdfdfdfd")
         editor.present(postViewController, animated: true, completion: nil)
     }
     

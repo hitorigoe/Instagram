@@ -138,7 +138,6 @@
                     <connections>
                         <outlet property="imageView" destination="bDo-BM-X95" id="wTM-Io-JPv"/>
                         <outlet property="textField" destination="X1d-UP-ZtV" id="CYl-6w-184"/>
-                        <outlet property="textView" destination="X1d-UP-ZtV" id="GqI-E6-rnA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgX-ge-OZr" userLabel="First Responder" sceneMemberID="firstResponder"/>

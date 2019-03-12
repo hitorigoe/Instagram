@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class PostData: NSObject {
-    var id: String?
+    var id: String? // nilの可能性があるから「?」 print出力するとnilでも「?」は大丈夫
     var image: UIImage?
     var imageString: String?
     var name: String?

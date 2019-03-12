@@ -21,6 +21,9 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         // 受け取った画像をImageViewに設定する
         imageView.image = image
+        print("aaa")
+        print(image)
+        print("bbb")
 
         // Do any additional setup after loading the view.
     }

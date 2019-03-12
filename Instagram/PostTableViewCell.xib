@@ -74,11 +74,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="captionLabel" destination="kSe-O0-8QS" id="T6D-gV-61E"/>
                 <outlet property="dateLabel" destination="Qa8-mU-G4r" id="fjJ-9w-IEl"/>
                 <outlet property="likeButton" destination="BBp-f7-0jj" id="5j3-Ud-Iur"/>
                 <outlet property="likeLabel" destination="EUw-2E-7H9" id="Uit-ag-bCn"/>
                 <outlet property="postImageView" destination="hQv-w0-vBR" id="oQc-1S-XPK"/>
-                <outlet property="sectionLabel" destination="kSe-O0-8QS" id="anM-Wc-H7C"/>
             </connections>
             <point key="canvasLocation" x="165.59999999999999" y="115.14242878560721"/>
         </tableViewCell>
