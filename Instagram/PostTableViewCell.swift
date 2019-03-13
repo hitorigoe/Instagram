@@ -2,7 +2,7 @@
 //  PostTableViewCell.swift
 //  Instagram
 //
-//  Created by 鳥越洋之 on 2019/03/11.
+//  Created by new torigoe on 2019/03/13.
 //  Copyright © 2019 鳥越洋之. All rights reserved.
 //
 
@@ -11,7 +11,6 @@ import UIKit
 class PostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: UIImageView!
-    
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -26,7 +25,6 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
     func setPostData(_ postData: PostData) {
         self.postImageView.image = postData.image
         

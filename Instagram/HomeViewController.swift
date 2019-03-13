@@ -14,9 +14,36 @@ import FirebaseDatabase
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    fileprivate let refreshCtl = UIRefreshControl()
     var postArray: [PostData] = []
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
+    var adddata = false
+    var aaa = false
+
+    @objc func refresh(sender: UIRefreshControl) {
+        // ここが引っ張られるたびに呼び出される
+        // 通信終了後、endRefreshingを実行することでロードインジケーター（くるくる）が終了
+
+        print("DEBUG_PRINT: .childAddedイベントが発生しました1。")
+        let userID = Auth.auth().currentUser?.uid
+        let postsRef = Database.database().reference().child("posts").child("-L_r3cTz6X19Yr2x9VF_")
+        postsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            print(userID)
+            print("ここまでOK")
+            let postData = PostData(snapshot: snapshot, myId: userID!)
+            
+            print(postData.name)
+            print("qqq")
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        refreshCtl.endRefreshing()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +61,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // テーブル行の高さの概算値を設定しておく
         // 高さ概算値 = 「縦横比1:1のUIImageViewの高さ(=画面幅)」+「いいねボタン、キャプションラベル、その他余白の高さの合計概算(=100pt)」
         tableView.estimatedRowHeight = UIScreen.main.bounds.width + 100
+        tableView.refreshControl = refreshCtl
+        refreshCtl.addTarget(self, action: #selector(HomeViewController.refresh(sender:)), for: .valueChanged)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,8 +73,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // 要素が追加されたらpostArrayに追加してTableViewを再表示する
                 let postsRef = Database.database().reference().child(Const.PostPath)
                 postsRef.observe(.childAdded, with: { snapshot in
-                    print("DEBUG_PRINT: .childAddedイベントが発生しました。")
-                    
+                    print("DEBUG_PRINT: .childAddedイベントが発生しました2。")
+                    self.adddata = true
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
@@ -57,7 +86,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 })
                 // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childChanged, with: { snapshot in
-                    print("DEBUG_PRINT: .childChangedイベントが発生しました。")
+                    print("DEBUG_PRINT: .childChangedイベントが発生しました3。")
                     
                     if let uid = Auth.auth().currentUser?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
