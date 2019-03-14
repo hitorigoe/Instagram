@@ -26,6 +26,7 @@ class PostData: NSObject {
         let valueDictionary = snapshot.value as! [String: Any]
         
         imageString = valueDictionary["image"] as? String
+        
         image = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
         
         self.name = valueDictionary["name"] as? String

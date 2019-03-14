@@ -47,5 +47,8 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
     }
+    func setCommentPostData(_ postCommentData: PostCommentData) {
+        
+    }
     
 }

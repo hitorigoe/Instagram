@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     fileprivate let refreshCtl = UIRefreshControl()
     var postArray: [PostData] = []
+    var postCommentArray: [PostCommentData] = []
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
     var adddata = false
@@ -32,12 +33,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let postsRef = Database.database().reference().child("posts").child("-L_r3cTz6X19Yr2x9VF_")
         postsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            print(userID)
+            
             print("ここまでOK")
             let postData = PostData(snapshot: snapshot, myId: userID!)
-            
-            print(postData.name)
-            print("qqq")
             
             // ...
         }) { (error) in
@@ -154,7 +152,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-        
+        //cell.setCommentPostData(postCommentArray[indexPath.row])
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(self.popup(_:)), for: .touchUpInside)
@@ -162,8 +160,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     @objc func popup(_ sender: Any) {
-        print("test11")
-        view.addSubview(popupViewController.view)
+        let popupViewController = self.storyboard?.instantiateViewController(withIdentifier:"Popup") as! PopupViewController
+        //popupViewController.uid =
+        self.present(popupViewController, animated: true, completion: nil)
+        
     }
     
     // セル内のボタンがタップされた時に呼ばれるメソッド
