@@ -17,6 +17,7 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var commentField: UITextField!
     var name: String?
     var uid: String?
+    var post_id: String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +30,7 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
         let name = Auth.auth().currentUser?.displayName
         
         let postRef = Database.database().reference().child(Const.PostCommentPath)
-        let postDic = ["comment": commentField.text!, "time": String(time), "name": name!]
+        let postDic = ["comment": commentField.text!, "time": String(time), "name": name!,"post_id": post_id]
         postRef.childByAutoId().setValue(postDic)
         SVProgressHUD.showSuccess(withStatus: "コメント投稿しました")
         UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)

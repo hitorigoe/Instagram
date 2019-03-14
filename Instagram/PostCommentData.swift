@@ -12,22 +12,20 @@ import FirebaseDatabase
 class PostCommentData: NSObject {
     var id: String? // nilの可能性があるから「?」 print出力するとnilでも「?」は大丈夫
     var name: String?
-    var comment: [String]?
+    var comments: String?
     var date: Date?
-    
+    var post_id: String?
     init(snapshot: DataSnapshot, myId: String) {
         self.id = snapshot.key
         
         let valueDictionary = snapshot.value as! [String: Any]
         
         self.name = valueDictionary["name"] as? String
-        
+        self.post_id = valueDictionary["post_id"] as? String
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
         
-        if let comments = valueDictionary["comment"] as? [String] {
-            self.comment = comments
-        }
+        self.comments = valueDictionary["comment"] as? String
         
     }
 }

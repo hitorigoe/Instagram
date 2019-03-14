@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // Get user value
             
             print("ここまでOK")
-            let postData = PostData(snapshot: snapshot, myId: userID!)
+            //let postData = PostData(snapshot: snapshot, myId: userID!)
             
             // ...
         }) { (error) in
@@ -152,16 +152,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-        //cell.setCommentPostData(postCommentArray[indexPath.row])
-        // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
-        cell.commentButton.addTarget(self, action: #selector(self.popup(_:)), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action: #selector(self.popup(_:forEvent:)), for: .touchUpInside)
         
         return cell
     }
-    @objc func popup(_ sender: Any) {
+    @objc func popup(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        
         let popupViewController = self.storyboard?.instantiateViewController(withIdentifier:"Popup") as! PopupViewController
-        //popupViewController.uid =
+        popupViewController.post_id = postArray[indexPath!.row].id
         self.present(popupViewController, animated: true, completion: nil)
         
     }
