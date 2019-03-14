@@ -31,7 +31,9 @@ class PostTableViewCell: UITableViewCell {
     func setPostData(_ postData: PostData) {
         self.postImageView.image = postData.image
         
+        print("eeeeeedd")
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        //self.commentLabel.text = "\(postData.name!) : \(postData.comment)"
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
         
@@ -48,8 +50,8 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
     }
-    func setCommentPostData(_ postCommentData: PostCommentData) {
-        self.commentLabel.text = "\(postCommentData.name!) : \(postCommentData.comments!)"
+    func setCommentPostData(_ :String) {
+        //self.commentLabel.text = "\(postCommentData.name!) : \(postCommentData.comments!)"
     }
     
 }

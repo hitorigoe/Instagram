@@ -81,6 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         self.postArray.insert(postData, at: 0)
+                        // ここにおそらくコメントの配列
                         
                         // TableViewを再表示する
                         self.tableView.reloadData()
@@ -152,6 +153,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
+        print(postArray[indexPath.row].id)
+        print("wwwww")
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(self.popup(_:forEvent:)), for: .touchUpInside)
         
@@ -167,7 +170,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // 配列からタップされたインデックスのデータを取り出す
         
         let popupViewController = self.storyboard?.instantiateViewController(withIdentifier:"Popup") as! PopupViewController
-        popupViewController.post_id = postArray[indexPath!.row].id
+        popupViewController.postdata = postArray[indexPath!.row]
         self.present(popupViewController, animated: true, completion: nil)
         
     }
