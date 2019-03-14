@@ -20,7 +20,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var observing = false
     var adddata = false
     var aaa = false
-
+    var popupViewController = PopupViewController()
+    var popupBtn = UIButton()
+    
     @objc func refresh(sender: UIRefreshControl) {
         // ここが引っ張られるたびに呼び出される
         // 通信終了後、endRefreshingを実行することでロードインジケーター（くるくる）が終了
@@ -46,6 +48,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addChild(popupViewController)
+        popupViewController.didMove(toParent: self)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -153,8 +157,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+        cell.commentButton.addTarget(self, action: #selector(self.popup(_:)), for: .touchUpInside)
         
         return cell
+    }
+    @objc func popup(_ sender: Any) {
+        print("test11")
+        view.addSubview(popupViewController.view)
     }
     
     // セル内のボタンがタップされた時に呼ばれるメソッド
