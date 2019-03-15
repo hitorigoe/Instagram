@@ -33,7 +33,7 @@ class PostTableViewCell: UITableViewCell {
         print(postData.comments)
         print("eeeeeedd")
         if(postData.comments.count > 0) {
-            var str:String = "コメント一覧\r\n"
+            var str:String = "コメント一覧\n"
             
             for num in postData.comments {
                 print(num[1])
