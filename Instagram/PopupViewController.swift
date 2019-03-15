@@ -15,10 +15,11 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentField: UITextField!
-    var name: String?
-    var comments: String?
+    var name: String!
+    //var comments: String!
     var uid: String?
     var postdata: PostData!
+    //var data:Dictionary<<#Key: Hashable#>, Any>
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +28,7 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func goButton(_ sender: Any) {
-        let time = Date.timeIntervalSinceReferenceDate
+        let _ = Date.timeIntervalSinceReferenceDate
         let name = Auth.auth().currentUser?.displayName
         
         var postRef = Database.database().reference().child(Const.PostPath)
@@ -41,8 +42,9 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
         //let postDic = ["comment": commentField.text!, "time": String(time), "name": name!,"post_id": post_id]
         //postRef.childByAutoId().setValue(postDic)
         //ここはappendで追加したい
-        postdata.comments.append(name!)
-        postdata.comments.append(commentField.text!)
+        //data = [name!,commentField.text!]
+        postdata.comments.append([name!,commentField.text!])
+        //postdata.comments.append([commentField.text!])
         postRef = Database.database().reference().child(Const.PostPath).child(postdata.id!)
         let comments = ["comments": postdata.comments]
         postRef.updateChildValues(comments)

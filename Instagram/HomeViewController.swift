@@ -80,6 +80,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
+                        print("qaqaqa")
+                        print(postData)
                         self.postArray.insert(postData, at: 0)
                         // ここにおそらくコメントの配列
                         
@@ -153,7 +155,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-        print(postArray[indexPath.row].id)
+        print(postArray[indexPath.row].comments)
         print("wwwww")
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
         cell.commentButton.addTarget(self, action: #selector(self.popup(_:forEvent:)), for: .touchUpInside)

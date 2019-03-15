@@ -30,10 +30,28 @@ class PostTableViewCell: UITableViewCell {
     
     func setPostData(_ postData: PostData) {
         self.postImageView.image = postData.image
-        
+        print(postData.comments)
         print("eeeeeedd")
+        if(postData.comments.count > 0) {
+            var str:String = "コメント一覧\r\n"
+            
+            for num in postData.comments {
+                print(num[1])
+                print("tick")
+                
+                str.append("\(num[0]) : \(num[1])\n")
+            }
+            print(str)
+            self.commentLabel.text = str
+        }
         self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
-        //self.commentLabel.text = "\(postData.name!) : \(postData.comment)"
+        print("showshow1")
+        for come in postData.comments {
+            // ステートメント
+            dump(come)
+        }
+        print("showshow2")
+        //self.commentLabel.text = "\(postData.name!) : \(postData.comments.)"
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
         
