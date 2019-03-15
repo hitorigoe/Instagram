@@ -19,7 +19,6 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
     //var comments: String!
     var uid: String?
     var postdata: PostData!
-    //var data:Dictionary<<#Key: Hashable#>, Any>
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +35,11 @@ class PopupViewController: UIViewController,UITextFieldDelegate {
             return
         }
         
-        
-        dump(postdata)
-        print("eeeeff")
         //let postDic = ["comment": commentField.text!, "time": String(time), "name": name!,"post_id": post_id]
         //postRef.childByAutoId().setValue(postDic)
         //ここはappendで追加したい
         //data = [name!,commentField.text!]
-        postdata.comments.append([name!,commentField.text!])
+        postdata.comments.append(["name":name!,"comment":commentField.text!])
         //postdata.comments.append([commentField.text!])
         postRef = Database.database().reference().child(Const.PostPath).child(postdata.id!)
         let comments = ["comments": postdata.comments]

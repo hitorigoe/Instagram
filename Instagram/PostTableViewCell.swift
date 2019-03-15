@@ -30,16 +30,14 @@ class PostTableViewCell: UITableViewCell {
     
     func setPostData(_ postData: PostData) {
         self.postImageView.image = postData.image
-        print(postData.comments)
-        print("eeeeeedd")
         if(postData.comments.count > 0) {
-            var str:String = "コメント一覧\n"
-            
-            for num in postData.comments {
-                print(num[1])
+            var str = "コメント一覧\n"
+            let data = postData.comments
+            for num in data {
+                print(num["comment"])
                 print("tick")
                 
-                str.append("\(num[0]) : \(num[1])\n")
+                str.append("\(num["name"]!) : \(num["comment"]!)\n")
             }
             print(str)
             self.commentLabel.text = str

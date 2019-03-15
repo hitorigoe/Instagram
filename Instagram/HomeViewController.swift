@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     fileprivate let refreshCtl = UIRefreshControl()
     var postArray: [PostData] = []
-    var postCommentArray: [PostCommentData] = []
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
     var adddata = false
@@ -46,9 +45,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addChild(popupViewController)
-        popupViewController.didMove(toParent: self)
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         
